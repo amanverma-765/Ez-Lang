@@ -1,0 +1,27 @@
+// Variable assignment
+manlo var_name = 100
+likho("var_name is $var_name")
+
+// if else statement
+agar var_name > 50 ho_tab
+    likho("The number is greater than 50")
+nahi_to_agar var_name == 0 ho_tab
+    likho("The number is zero")
+nahi_to
+    likho("the number is less than 50 and not 0")
+
+// creating an array
+manlo student_list = [1, 2, 3, 4, 5, 6]
+jabtak student student_list me ho_tabtak
+    likho("the number is $student")
+    agar student == 5 ho_tab
+        rukjao
+    likho("student name is $student")
+
+// while loop
+manlo a = 1
+jabtak a < 10 ho_tabtak
+     agar a == 7 ho_tab
+        rukjao
+    likho("a is $a")
+    a = a + 1 

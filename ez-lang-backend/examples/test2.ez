@@ -1,0 +1,102 @@
+// Program to generate Fibonacci series
+manlo n = 10
+manlo a = 0
+manlo b = 1
+
+likho("Fibonacci series:")
+jabtak n > 0 ho_tabtak
+    likho("$a")
+    manlo temp = a + b
+    a = b
+    b = temp
+    n = n - 1
+
+
+likho("Factorial of number:")
+// Program to calculate factorial of a number
+manlo num = 5
+manlo factorial = 1
+
+jabtak num > 0 ho_tabtak
+    factorial = factorial * num
+    num = num - 1
+
+likho("Factorial is $factorial")
+
+
+// Program to check if a number is prime
+manlo num = 30
+manlo is_prime = True
+manlo i = 2
+
+jabtak i <= num / 2 ho_tabtak
+    agar num % i == 0 ho_tab
+        is_prime = False
+        rukjao
+    i = i + 1
+
+agar is_prime ho_tab
+    likho("$num is a prime number")
+nahi_to
+    likho("$num is not a prime number")
+
+// Program to reverse a string
+manlo original = "HELLO"
+manlo reversed = ""
+
+manlo i = len(original) - 1
+jabtak i >= 0 ho_tabtak
+    reversed = reversed + original[i]
+    i = i - 1
+
+likho("Reversed string is $reversed")
+
+
+manlo n = 5
+
+manlo i = 1
+jabtak i <= n ho_tabtak
+    manlo j = 1
+    jabtak j <= n ho_tabtak
+        likho("$i * $j = ${i * j}")
+        j = j + 1
+    likho("") // Move to the next row
+    i = i + 1
+
+
+// Print diamond star pattern
+manlo n = 5
+
+// Upper part
+manlo i = 1
+jabtak i <= n ho_tabtak
+    manlo spaces = n - i
+    manlo k = 1
+    jabtak k <= spaces ho_tabtak
+        likho(" ")
+        k = k + 1
+
+    manlo j = 1
+    jabtak j <= (2 * i - 1) ho_tabtak
+        likho("*")
+        j = j + 1
+
+    likho("")
+    i = i + 1
+
+// Lower part
+manlo i = n - 1
+jabtak i >= 1 ho_tabtak
+    manlo spaces = n - i
+    manlo k = 1
+    jabtak k <= spaces ho_tabtak
+        likho(" ")
+        k = k + 1
+
+    manlo j = 1
+    jabtak j <= (2 * i - 1) ho_tabtak
+        likho("*")
+        j = j + 1
+
+    likho("")
+    i = i - 1
