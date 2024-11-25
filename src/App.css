@@ -316,6 +316,7 @@ body {
   flex: 1;
   padding: 0;
   background: #1E293B;
+  overflow: hidden;
 }
 
 .output-content {
@@ -664,6 +665,7 @@ body {
 .tab-content {
   background: #0F172A;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .output-content {
@@ -818,7 +820,7 @@ body {
   }
 
   .editor-section, .output-section {
-    height: 400px;
+    height: 80vh;
   }
 
   .code-editor, .output-content {

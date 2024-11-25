@@ -147,7 +147,7 @@ export function CodeEditor() {
                     <div className="editor-header">
                         <h2>Code Editor</h2>
                         <div className="editor-actions">
-                        <select
+                            <select
                                 onChange={(e) => setCode(examples[e.target.value])}
                                 className="example-select glass"
                                 defaultValue="hello"
