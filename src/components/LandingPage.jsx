@@ -47,7 +47,7 @@ likho("🎉 Series complete!")`;
                             <button className="primary-button" onClick={() => navigate("/editor")}>
                                 Explore Playground
                             </button>
-                            <a href="https://github.com/yourusername/ezlang" className="secondary-button">
+                            <a href="https://github.com/amanverma-765/Ez-Lang" className="secondary-button">
                                 View on GitHub
                             </a>
                         </div>

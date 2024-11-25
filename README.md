@@ -113,13 +113,7 @@ nahi_to
 - Online Playground Available
 
 ## 🌐 Playground
-Interactive testing at [Your Website URL]
-
-## 📦 Installation
-(Deployment instructions)
-
-## 📄 License
-[Your License]
+Interactive testing at https://ezlang-beta.vercel.app/
 
 ## 🤝 Contributions
 

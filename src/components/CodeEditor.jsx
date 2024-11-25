@@ -16,6 +16,7 @@ export function CodeEditor() {
     const [transpiled, setTranspiled] = useState('')
     const [ws, setWs] = useState(null)
     const [connected, setConnected] = useState(false)
+    const [isConnecting, setIsConnecting] = useState(true)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -24,11 +25,15 @@ export function CodeEditor() {
         socket.onopen = () => {
             console.log('Connected to WebSocket')
             setConnected(true)
+            setIsConnecting(false)
         }
 
         socket.onclose = () => {
             console.log('Disconnected from WebSocket')
             setConnected(false)
+            setTimeout(() => {
+                setIsConnecting(false)
+            }, 5000);
         }
 
         socket.onmessage = (event) => {
@@ -127,9 +132,13 @@ export function CodeEditor() {
                 </button>
                 <div
                     className="connection-status"
-                    data-status={connected ? "connected" : "disconnected"}
+                    data-status={isConnecting ? "connecting" : connected ? "connected" : "disconnected"}
                 >
-                    {connected ? '🟢 Connected' : '🔴 Disconnected'}
+                    {isConnecting
+                        ? '🟡 Connecting...'
+                        : connected
+                            ? '🟢 Connected'
+                            : '🔴 Disconnected'}
                 </div>
             </div>
 
@@ -138,7 +147,7 @@ export function CodeEditor() {
                     <div className="editor-header">
                         <h2>Code Editor</h2>
                         <div className="editor-actions">
-                            <select
+                        <select
                                 onChange={(e) => setCode(examples[e.target.value])}
                                 className="example-select glass"
                                 defaultValue="hello"
