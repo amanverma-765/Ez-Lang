@@ -28,7 +28,7 @@ likho("🎉 Series complete!")`;
             <div className="landing-page">
                 <nav className="navbar">
                     <div className="navbar-brand">
-                        <img src="/src/assets/ezlang-bg-dark.png" alt={"logo"} className="logo"/>
+                        <img src="/assets/ezlang-bg-dark.png" alt={"logo"} className="logo"/>
                         <div className="logo">EzLang</div>
                     </div>
                     <button className="try-button" onClick={() => navigate("/editor")}>
