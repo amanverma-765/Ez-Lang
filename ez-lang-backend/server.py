@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
 import json
