@@ -25,7 +25,7 @@ class CodeExecutor:
     def __init__(self):
         self.transpiler = EzLang()
 
-@app.get("/health")
+@app.get("/")
 async def health_check():
     return {"status": "healthy"}
 

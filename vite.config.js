@@ -7,4 +7,9 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1000,
   },
+  resolve: {
+    alias: {
+      '@': '/src', // Allows using '@' as an alias for '/src'
+    },
+  },
 })
