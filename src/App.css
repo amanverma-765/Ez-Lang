@@ -820,7 +820,7 @@ body {
   }
 
   .editor-section, .output-section {
-    height: 80vh;
+    height: 65vh;
   }
 
   .code-editor, .output-content {
