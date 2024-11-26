@@ -21,6 +21,7 @@ export function CodeEditor() {
 
     useEffect(() => {
         const socket = new WebSocket('wss://ezlang.onrender.com/ws');
+        // const socket = new WebSocket('http://localhost:8000/ws');
 
         socket.onopen = () => {
             console.log('Connected to WebSocket')
