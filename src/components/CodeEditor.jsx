@@ -23,6 +23,7 @@ export function CodeEditor() {
 
         const checkServerStatus = async () => {
             try {
+                console.log("Connecting with backend server...")
                 const response = await fetch('https://ezlang.onrender.com/');
                 if (response.ok) {
                     console.log('Server is available, proceeding with WebSocket connection...');
