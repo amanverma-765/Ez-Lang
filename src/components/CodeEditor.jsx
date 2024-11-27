@@ -20,36 +20,58 @@ export function CodeEditor() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const socket = new WebSocket('wss://ezlang.onrender.com/ws');
-        // const socket = new WebSocket('http://localhost:8000/ws');
 
-        socket.onopen = () => {
-            console.log('Connected to WebSocket')
-            setConnected(true)
-            setIsConnecting(false)
-        }
+        const checkServerStatus = async () => {
+            try {
+                const response = await fetch('https://ezlang.onrender.com/');
+                if (response.ok) {
+                    console.log('Server is available, proceeding with WebSocket connection...');
+                    await initializeWebSocket();
+                } else {
+                    console.log('Server not available');
+                    setIsConnecting(false);
+                }
+            } catch (error) {
+                console.error('Error connecting to server:', error);
+                setIsConnecting(false);
+            }
+        };
 
-        socket.onclose = () => {
-            console.log('Disconnected from WebSocket')
-            setConnected(false)
-            setTimeout(() => {
+        const initializeWebSocket = async () => {
+            const socket = new WebSocket('wss://ezlang.onrender.com/ws');
+            // const socket = new WebSocket('http://localhost:8000/ws');
+
+            socket.onopen = () => {
+                console.log('Connected to WebSocket')
+                setConnected(true)
                 setIsConnecting(false)
-            }, 5000);
-        }
+            }
 
-        socket.onmessage = (event) => {
-            const response = JSON.parse(event.data)
-            if (response.status === 'success') {
-                setTranspiled(response.transpiled_code)
-                setOutput(response.output)
-            } else {
-                setOutput(`Error: ${response.error}`)
+            socket.onclose = () => {
+                console.log('Disconnected from WebSocket')
+                setConnected(false)
+                setTimeout(() => {
+                    setIsConnecting(false)
+                }, 5000);
+            }
+
+            socket.onmessage = (event) => {
+                const response = JSON.parse(event.data)
+                if (response.status === 'success') {
+                    setTranspiled(response.transpiled_code)
+                    setOutput(response.output)
+                } else {
+                    setOutput(`Error: ${response.error}`)
+                }
+            }
+            setWs(socket)
+            return () => {
+                socket.close()
             }
         }
-        setWs(socket)
-        return () => {
-            socket.close()
-        }
+
+        checkServerStatus()
+
     }, [])
 
     const runCode = () => {
